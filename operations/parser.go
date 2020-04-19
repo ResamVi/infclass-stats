@@ -105,8 +105,8 @@ func (c Controller) Parse(input string) {
 			c.AddKill(result[1])
 		}
 	} else if strings.HasPrefix(content, "infected") {
-		// Sample: "infected victim='Armadillo' duration='10'"
-		reg := regexp.MustCompile(`infected victim='(.+)' duration='(\d+)'`)
+		// Sample: "infected victim='Armadillo' duration='10' class='15'"
+		reg := regexp.MustCompile(`infected victim='(.+)' duration='(\d+)' class='\d+'`)
 		result := reg.FindStringSubmatch(content)
 
 		log.Debug("Victim: " + result[1])
@@ -165,8 +165,8 @@ func (c Controller) Parse(input string) {
 		c.AddScore(result[1], int(score/10))
 
 	} else if strings.HasPrefix(content, "choose_class") {
-		// Sample: "choose_class player='nameless tee' class='2'"
-		reg := regexp.MustCompile(`choose_class player='(.+)' class='(\d+)'`)
+		// Sample: "choose_class player='nameless tee' class='2' random='0'"
+		reg := regexp.MustCompile(`choose_class player='(.+)' class='(\d+)' random='[0-1]'`)
 		result := reg.FindStringSubmatch(content)
 
 		class, err := strconv.Atoi(result[2])
