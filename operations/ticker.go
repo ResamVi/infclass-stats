@@ -225,8 +225,8 @@ func (c Controller) Summary() {
 	}
 	c.Rcon.Say(fmt.Sprintf("Visit stats.resamvi.io for more stats"))
 
-	c.StatusRepository.ResetStatus()
-	c.Rcon.Status()
+	time.AfterFunc(4*time.Second, c.StatusRepository.ResetStatus)
+	time.AfterFunc(5*time.Second, c.Rcon.Status)
 }
 
 // Rank whispers to all players at what ranking they are
