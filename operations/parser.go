@@ -254,6 +254,8 @@ func (c Controller) Parse(input string) {
 
 }
 
+var last string
+
 // Command is executed when a !command was typed in the chat. Parses the command and decides what logic to execute
 func (c Controller) Command(clientID int64, sender string, cmd string, arg string) {
 
@@ -372,7 +374,10 @@ func (c Controller) Command(clientID int64, sender string, cmd string, arg strin
 	case "player":
 		c.CommandMe(clientID, arg)
 	case "me":
+		last = sender
 		c.CommandMe(clientID, sender)
+	case "you":
+		c.CommandMe(clientID, last)
 	case "wins":
 		c.CommandWins(clientID)
 	case "ninja":
