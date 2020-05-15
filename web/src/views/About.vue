@@ -15,7 +15,7 @@
           <img src="@/assets/github.png" style="margin-right:20px;">
         </td>
         <td>
-          <h1>See the code on <a href="https://infclass-stats">Github</a>.</h1>
+          <h1>See the code on <a href="https://github.com/ResamVi/infclass-stats">Github</a>.</h1>
         </td>
       </tr>
 
