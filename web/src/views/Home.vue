@@ -241,6 +241,8 @@ export default {
         "infc_bamboo3",
         "infc_towers",
         "infc_spacelab",
+        "infc_skull_winter",
+        "infc_normandie_winter",
         //"infc_deathdealer",
         //'infc_cherrytemple',
         //'infc_crystalcave',
