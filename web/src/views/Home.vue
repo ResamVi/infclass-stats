@@ -245,7 +245,6 @@ export default {
         "infc_spacelab",
         "infc_sewers",
         "infc_skull_winter",
-        "infc_normandie_winter",
         //"infc_deathdealer",
         //'infc_cherrytemple',
         //'infc_crystalcave',
