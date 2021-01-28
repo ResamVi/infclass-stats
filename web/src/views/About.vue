@@ -25,7 +25,7 @@
         </td>
         <td>
           <h1>Currently analyzing stats on Teeworlds Server:
-            <br/>95.172.92.194 - "oi8306 infclass"
+            <br/>195.123.214.91:8303 - "Zombies café"
           </h1>
         </td>
       </tr>
