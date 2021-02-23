@@ -175,6 +175,11 @@ func (c Controller) Infect(name string, aliveTime int) {
 // SurviveRound is called when a player survives when the time limit is up
 // Increases his "amount survived" count and the "amount survived" of his chosen class
 func (c Controller) SurviveRound(name string) {
+	// Surviving a round is deemed unfair when too few players exist: do not count
+	if c.ClientRepository.Count() < 6 {
+		return
+	}
+
 	player, err := c.PlayerRepository.FindPlayerByName(name)
 	status := c.StatusRepository.FindStatusByName(name)
 
