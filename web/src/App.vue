@@ -17,7 +17,7 @@ export default {
   },
 
   beforeMount() {
-    const ws = new WebSocket('wss://stats.resamvi.io:8000/');
+    const ws = new WebSocket('wss://xyz.resamvi.io/');
     ws.onmessage = ({ data }) => {
       this.$store.commit('update', JSON.parse(data));
     };
