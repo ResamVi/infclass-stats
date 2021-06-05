@@ -3,7 +3,6 @@ memory.db
 node_modules
 /dist
 src/log.txt
-/config
 log.txt
 
 # local env files

@@ -43,93 +43,41 @@ Visit [https://stats.resamvi.io](https://stats.resamvi.io) to see yourself.
 
 infclass-stats runs on Port `8000` so make sure it is free.
 
-Fill the <..> with your information:
+Fill the environment variables with your information:
 
-`autoexec.cfg` of the teeworlds server
+`autoexec.cfg`
 ```
-ec_bindaddr <ip>
-ec_port <port>
-ec_password <password>
+ec_bindaddr <myip>
+ec_port <myport>
+ec_password <mypassword>
 ec_output_level 2
 ```
 
-Set up your `config/config.go` of infclass-stats
+`docker-compose.yml` should match the above
 ```
-SERVER_IP = "<ip>"
-
-ECON_PORT = "<port>"
-
-ECON_PASSWORD = "<password>"
-
-...
-
-MYSQL_USER = "<mysql user>"
-
-MYSQL_PASSWORD = "<mysql password>"
+- SERVER_IP=<myip>
+- ECON_PORT=<myport>
+- ECON_PASSWORD=<mypassword>
 ```
 
-Setup a database named "infclass"
-
-Replace the IP in `web/src/App.vue`
+`web/Dockerfile`
 ```
-const ws = new WebSocket('ws://<ip>:8000/');
+ENV VUE_APP_API_URL="wss://xyz.resamvi.io/"
 ```
 
-Then run
+I'm using [Plausible](https://plausible.io/).  
+If you host this yourself you may want to stop the app from sending user stats:
 
-```
-go run main.go
-```
+`web/public/index.html`
+```diff
+    ...
+    <title>InfClass Statistics</title>
 
-or
-
-```
-./start.sh
-```
-which does the above repeatedly (helps recovering, when server crashes)
-
-
-# Config
-
-# SSL
-
-This implementation uses SSL. If you want to skip (easier testing) this step then:
-
-Change `wss` to `ws` in `App.vue`
-
-```
-const ws = new WebSocket('ws://localhost:8000/subscribe');
+-   <script async defer data-domain="stats.resamvi.io" src="https://abc.resamvi.io/js/pls.js"></script>
+</head>
 ```
 
-If you plan to use SSL create a symlink to the project root
-
-```
-ln -s /etc/letsencrypt/live/<url>/fullchain.pem ~/infclass-stats/fullchain.pem
-ln -s /etc/letsencrypt/live/<url>/privkey.pem ~/infclass-stats/privkey.pem
-```
 
 # How to make sure your Infclass mod is compatible with infclass-stats
 
-TODO
-
-Copy in what message logs are required 'Protocol'
-
-# TODO
-
-- Remove logs and fmts where possible
-
-# Website
-
-1. Install dependencies
-
-```
-yarn install
-```
-
-2. Build artifacts`
-
-```
-yarn run build
-```
-
-3. Move `dist` to `/var/www/` or appropriate place
+TODO: Copy in what message logs are required 'Protocol'

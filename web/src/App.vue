@@ -17,7 +17,7 @@ export default {
   },
 
   beforeMount() {
-    const ws = new WebSocket('wss://xyz.resamvi.io/');
+    const ws = new WebSocket(process.env.VUE_APP_API_URL);
     ws.onmessage = ({ data }) => {
       this.$store.commit('update', JSON.parse(data));
     };

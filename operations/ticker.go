@@ -164,8 +164,6 @@ func (c Controller) Infect(name string, aliveTime int) {
 		return
 	}
 
-	fmt.Println(name)
-
 	status := c.StatusRepository.FindStatusByName(name)
 	c.AddTimeAlive(status.ClassPicked, aliveTime, c.StatusRepository.GetMap())
 	//c.AddPick(status.CurrentClass)

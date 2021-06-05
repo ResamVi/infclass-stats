@@ -19,7 +19,6 @@ package infrastructure
 
 import (
 	"encoding/json"
-	"infclass-stats/config"
 	"infclass-stats/operations"
 	"net/http"
 	"time"
@@ -41,22 +40,15 @@ type WebserviceHandler struct {
 // TODO: Dont make Serve create the handler himself
 func Serve(controller operations.Controller) {
 	webserviceHandler := WebserviceHandler{Controller: controller}
-	
+
 	http.HandleFunc("/", func(res http.ResponseWriter, req *http.Request) {
 		webserviceHandler.getUpdates(res, req)
 	})
 
 	go func() {
-		if config.USE_SSL {
-			err := http.ListenAndServeTLS(":8000", config.CERT_FILE, config.KEY_FILE, nil)
-			if err != nil {
-				log.Panic(err)
-			}
-		} else {
-			err := http.ListenAndServe(":8000", nil)
-			if err != nil {
-				log.Panic(err)
-			}
+		err := http.ListenAndServe(":8001", nil)
+		if err != nil {
+			log.Panic(err)
 		}
 	}()
 }
