@@ -11,7 +11,7 @@ var (
 	ECON_PASSWORD = os.Getenv("ECON_PASSWORD")
 
 	// DEBUG_MODE gives additional logs
-	DEBUG_MODE = false
+	DEBUG_MODE = true
 
 	// SERVE_API will initialize a web server on port 8000 that serves a websocket connection
 	SERVE_API = true

@@ -73,7 +73,7 @@ If you host this yourself you may want to stop the app from sending user stats:
     ...
     <title>InfClass Statistics</title>
 
--   <script async defer data-domain="stats.resamvi.io" src="https://abc.resamvi.io/js/pls.js"></script>
+-   <script async defer data-domain="stats.resamvi.io" src="https://pls.resamvi.io/js/pls.js"></script>
 </head>
 ```
 
