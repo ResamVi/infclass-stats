@@ -1,7 +1,7 @@
 FROM node:16.1.0 as build-stage
 WORKDIR /app
 COPY package*.json ./
-ENV VUE_APP_API_URL="ws://localhost:8001"
+ENV VUE_APP_API_URL="wss://inf.resamvi.io"
 RUN npm install
 COPY . .
 RUN npm run build
