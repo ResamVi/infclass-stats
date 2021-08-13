@@ -270,7 +270,7 @@ func (repo GormRepo) Reset() {
 // Creates the tables if they do not exist yet and seeds the database
 // with an initial set of class objects to track overall class-specific performance.
 func NewGormDB() GormRepo {
-	args := config.MYSQL_USER + ":" + config.MYSQL_PASSWORD + "@/" + config.MYSQL_DB
+	args := config.MYSQL_USER + ":" + config.MYSQL_PASSWORD + "@tcp(infclass_db:3306)/" + config.MYSQL_DB
 	db, err := gorm.Open("mysql", args)
 	if err != nil {
 		log.Panicf("Could not connect to database: %s\n%s\n", args, err.Error())

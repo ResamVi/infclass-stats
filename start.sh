@@ -1,2 +1,2 @@
 #!/bin/bash
-while true; do go run main.go && break; done
+while true; do ./infclass-stats && break; done

@@ -57,7 +57,7 @@ func main() {
 	infrastructure.Listen(file, controller)
 
 	if config.SERVE_API {
-		log.Info("Starting HTTP server on localhost:8000")
+		log.Info("Starting HTTP server on localhost:8001")
 		infrastructure.Serve(controller)
 	}
 
