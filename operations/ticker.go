@@ -237,7 +237,7 @@ func (c Controller) Rank() {
 		if player.ClientID != -1 {
 			c.Rcon.Whisper(player.ClientID, fmt.Sprintf("-- STATS --"))
 			c.Rcon.Whisper(player.ClientID, fmt.Sprintf("Your current rank: %d, Rating: %.f", rank, rating))
-			c.Rcon.Whisper(player.ClientID, fmt.Sprintf("Command !help or http://infclass-stats.tk for more info"))
+			c.Rcon.Whisper(player.ClientID, fmt.Sprintf("Command !help or http://stats.resamvi.io for more info"))
 		}
 	}
 }
