@@ -21,7 +21,6 @@ jobs:
           envs: USER,TOKEN
           script: |
             git clone git@github.com:ResamVi/infclass-stats.git repo
-            cd repo
-            docker build . -t ghcr.io/resamvi/infclassci:latest
-            cd web
-            docker build . -t ghcr.io/resamvi/infclassci_web:latest
+            docker build repo/. -t ghcr.io/resamvi/infclassci:latest
+            docker build repo/web/. -t ghcr.io/resamvi/infclassci_web:latest
+            rm -rf repo
