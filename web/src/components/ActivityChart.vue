@@ -25,7 +25,6 @@ export default {
         dataLabels: {
           enabled: false
         },
-        labels: ['1', '2'],
         tooltip: {
           enabled: true,
           x: {
@@ -47,15 +46,13 @@ export default {
               show: true
             }
           },
-          yaxis: {
-            lines: {
-              show: true
-            }
-          }
         },
         xaxis: {
           labels: {
             formatter(value, timestamp) {
+              console.log(value);
+              console.log(timestamp);
+              console.log("---");
               const date = new Date(timestamp * 1000);
               const day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][date.getDay()];
               const hours = `0${date.getHours()}`;
