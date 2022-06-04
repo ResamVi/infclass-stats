@@ -35,7 +35,14 @@ const store = new Vuex.Store({
       return state.online.length;
     },
     mapImage(state) {
-      return require(`@/assets/maps/${state.currentMap}.png`);
+      let img;
+      try {
+        let name = state.currentMap.split(" ")[0];
+        img = require(`@/assets/maps/${name}.png`);
+      } catch (ex) {
+        return require(`@/assets/maps/infc_newdust.png`);
+      }
+      return img
     },
     // TODO: Pass getters
     classPicks: state => (className) => {
@@ -91,7 +98,7 @@ const store = new Vuex.Store({
       const data = state.activities.map(activity => [activity.Timestamp, activity.Amount]);
 
       return [{
-        name: 'series-activity',
+        name: 'Active players',
         // Convert aray of objects to array of arrays (which apexcharts understands)
         data,
       }];
