@@ -24,6 +24,12 @@ jobs:
           port: ${{ secrets.PORT }}
           envs: SERVER_IP,ECON_PORT,ECON_PASSWORD,DB_USER,DB_PASS,DB_NAME
           script: |
+            export SERVER_IP=$SERVER_IP
+            export ECON_PORT=$ECON_PORT
+            export ECON_PASSWORD=$ECON_PASSWORD
+            export DB_USER=$DB_USER
+            export DB_PASS=$DB_PASS
+            export DB_NAME=$DB_NAME
             git clone git@github.com:ResamVi/infclass-stats.git repo
             docker-compose -p infclass -f repo/docker-compose.yml down
             docker-compose -p infclass -f repo/docker-compose.yml up --detach --build --force-recreate
