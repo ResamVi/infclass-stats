@@ -4,14 +4,14 @@ services:
         build: ./
         restart: always
         ports:
-            - "8001:8001"
+            - "127.0.0.1:8001:8001"
         environment:
-            - SERVER_IP=192.169.0.1337 # adjust to your settings
-            - ECON_PORT=8001 # adjust to your settings
-            - ECON_PASSWORD=econpw # adjust to your settings
-            - MYSQL_USER=infclassuser
-            - MYSQL_PASSWORD=infclasspw
-            - MYSQL_DB=infclassdb
+            - SERVER_IP=${SERVER_IP}
+            - ECON_PORT=${ECON_PORT}
+            - ECON_PASSWORD=${ECON_PASSWORD}
+            - MYSQL_USER=${DB_USER}
+            - MYSQL_PASSWORD=${DB_PASS}
+            - MYSQL_DB=${DB_NAME}
 
     infclass_db:
         image: mariadb:10.3.29
@@ -19,17 +19,16 @@ services:
         volumes:
           - infclass_data:/var/lib/mysql
         ports:
-            - "3306:3306"
+            - "127.0.0.1:3306:3306"
         environment:
-            - MARIADB_ROOT_PASSWORD=rootpw
-            - MARIADB_USER=infclassuser
-            - MARIADB_PASSWORD=infclasspw
-            - MARIADB_DATABASE=infclassdb
+            - MARIADB_USER=${DB_USER}
+            - MARIADB_PASSWORD=${DB_PASS}
+            - MARIADB_DATABASE=${DB_NAME}
     
     infclass_web:
         build: ./web
         ports:
-            - "80:80"
+            - "127.0.0.1:80:80"
 
 
 volumes:
