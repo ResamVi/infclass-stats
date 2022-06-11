@@ -19,9 +19,10 @@ package infrastructure
 
 import (
 	"encoding/json"
-	"infclass-stats/operations"
 	"net/http"
 	"time"
+
+	"infclass-stats/operations"
 
 	"github.com/gorilla/websocket"
 )
@@ -46,7 +47,7 @@ func Serve(controller operations.Controller) {
 	})
 
 	go func() {
-		err := http.ListenAndServe(":8001", nil)
+		err := http.ListenAndServe(":8002", nil)
 		if err != nil {
 			log.Panic(err)
 		}

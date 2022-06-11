@@ -20,6 +20,8 @@
 package main
 
 import (
+	"github.com/op/go-logging"
+
 	"infclass-stats/config"
 	"infclass-stats/infrastructure"
 	"infclass-stats/operations"
