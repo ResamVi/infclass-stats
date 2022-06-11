@@ -62,7 +62,7 @@ ec_output_level 2
 
 `web/Dockerfile`
 ```
-ENV VUE_APP_API_URL="wss://inf.resamvi.io:8001"
+ENV VUE_APP_API_URL="wss://inf.resamvi.io:8002"
 ```
 
 I'm using [Plausible](https://plausible.io/).  

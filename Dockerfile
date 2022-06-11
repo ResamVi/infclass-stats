@@ -8,6 +8,6 @@ RUN go build
 
 RUN chmod +x start.sh
 
-EXPOSE 8001
+EXPOSE 8002
 
 CMD ["./start.sh"]

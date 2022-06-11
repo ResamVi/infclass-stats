@@ -20,7 +20,6 @@
 package main
 
 import (
-	"github.com/op/go-logging"
 	"infclass-stats/config"
 	"infclass-stats/infrastructure"
 	"infclass-stats/operations"
@@ -36,14 +35,14 @@ func main() {
 	} else {
 		logging.SetLevel(logging.INFO, "main")
 	}
-	
+
 	log.Info("Connecting to econ at " + config.SERVER_IP + ":" + config.ECON_PORT)
 	file, rcon := infrastructure.Authenticate()
-	
+
 	log.Info("Initialize database")
 	gormDB := infrastructure.NewGormDB()
 	serverState := infrastructure.NewServerState()
-	
+
 	controller := operations.Controller{}
 	controller.ClientRepository = gormDB
 	controller.RoleRepository = gormDB
@@ -53,11 +52,11 @@ func main() {
 	controller.ActivityRepository = gormDB
 	controller.StatusRepository = serverState
 	controller.Rcon = rcon
-	
+
 	infrastructure.Listen(file, controller)
 
 	if config.SERVE_API {
-		log.Info("Starting HTTP server on localhost:8001")
+		log.Info("Starting HTTP server on localhost:8002")
 		infrastructure.Serve(controller)
 	}
 
