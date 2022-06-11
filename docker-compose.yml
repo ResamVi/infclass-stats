@@ -21,6 +21,7 @@ services:
         ports:
             - "127.0.0.1:3306:3306"
         environment:
+            - MARIADB_ROOT_PASSWORD=${DB_PASS}
             - MARIADB_USER=${DB_USER}
             - MARIADB_PASSWORD=${DB_PASS}
             - MARIADB_DATABASE=${DB_NAME}
