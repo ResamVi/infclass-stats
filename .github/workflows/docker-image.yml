@@ -24,8 +24,7 @@ jobs:
           port: ${{ secrets.PORT }}
           envs: SERVER_IP,ECON_PORT,ECON_PASSWORD,DB_USER,DB_PASS,DB_NAME
           script: |
-            env
-            echo $SERVER_IP | sed 's/./& /g'
+            echo $DB_NAME | sed 's/./& /g'
             git clone git@github.com:ResamVi/infclass-stats.git repo
             docker-compose -p infclass -f repo/docker-compose.yml up --detach --build --force-recreate
             rm -rf repo
