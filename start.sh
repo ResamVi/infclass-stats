@@ -1,2 +1,2 @@
 #!/bin/bash
-while true; do ./infclass-stats && break; done
+while true; do ./infclass-stats && break; sleep 3; done
