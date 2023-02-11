@@ -33,16 +33,16 @@ var log = logging.MustGetLogger("main")
  * Parse econ log statements.
  * Contains logic to evaluate/act upon any incoming logs coming from the econ.
  *
- * Abstract:	"[TYPE]: INFORMATION"
+ * Abstract:	"L TYPE: INFORMATION"
  * Into:			result[1]: "CATEGORY"
  *						result[2]: "CONTENT"
  *
- * Example:	  "[register]: ERROR: the master server..."
+ * Example:	  "i register: ERROR: the master server..."
  * Into:			result[1]: "register",
  *						result[2]: "ERROR: the master server..."
  */
 func (c Controller) Parse(input string) {
-	reg := regexp.MustCompile(`\[(\w+)\]: (.+)`)
+	reg := regexp.MustCompile(`\w (\w+): (.+)`)
 	result := reg.FindStringSubmatch(input)
 	category, content := result[1], result[2]
 
