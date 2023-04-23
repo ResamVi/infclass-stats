@@ -42,7 +42,8 @@ var log = logging.MustGetLogger("main")
  *						result[2]: "ERROR: the master server..."
  */
 func (c Controller) Parse(input string) {
-	reg := regexp.MustCompile(`\w (\w+): (.+)`)
+	log.Debug("Processing string: " + input)
+	reg := regexp.MustCompile(`\w ([\w\-]+): (.+)`)
 	result := reg.FindStringSubmatch(input)
 	category, content := result[1], result[2]
 
