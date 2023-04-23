@@ -9,9 +9,9 @@ services:
             - SERVER_IP=${SERVER_IP}
             - ECON_PORT=${ECON_PORT}
             - ECON_PASSWORD=${ECON_PASSWORD}
-            - MYSQL_USER=${DB_USER}
-            - MYSQL_PASSWORD=${DB_PASS}
-            - MYSQL_DB=${DB_NAME}
+            - MYSQL_USER=${DB_USER:-user}
+            - MYSQL_PASSWORD=${DB_PASS:-pass}
+            - MYSQL_DB=${DB_NAME:-infclass}
 
     infclass_db:
         image: mariadb:10.3.29
@@ -21,10 +21,10 @@ services:
         ports:
             - "127.0.0.1:3306:3306"
         environment:
-            - MARIADB_ROOT_PASSWORD=${DB_PASS}
-            - MARIADB_USER=${DB_USER}
-            - MARIADB_PASSWORD=${DB_PASS}
-            - MARIADB_DATABASE=${DB_NAME}
+            - MARIADB_ROOT_PASSWORD=${DB_PASS:-pass}
+            - MARIADB_USER=${DB_USER:-user}
+            - MARIADB_PASSWORD=${DB_PASS:-pass}
+            - MARIADB_DATABASE=${DB_NAME:-infclass}
     
     infclass_web:
         build: ./web
